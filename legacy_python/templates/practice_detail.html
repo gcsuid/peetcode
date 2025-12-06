@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Practice: {{ problem.title }}</h2>
+    <p>
+        <span class="difficulty-{{ problem.difficulty }}">{{ problem.difficulty }}</span>
+        <span class="tag">{{ problem.tags }}</span>
+    </p>
+
+    <h3>Problem Description</h3>
+    <div style="background: #f9f9f9; padding: 15px; border-radius: 4px; white-space: pre-wrap;">{{ problem.description
+        }}</div>
+
+    <hr>
+
+    <h3>Your Solution Now</h3>
+    <form method="post">
+        <label>Your Approach (in words)</label>
+        <textarea name="approach_text" rows="5" required placeholder="Explain how you solve it now..."></textarea>
+
+        <label>Your Code (Optional)</label>
+        <textarea name="code" rows="10" style="font-family: monospace;"
+            placeholder="Write your code here..."></textarea>
+
+        <label>Language</label>
+        <select name="language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+            <option value="javascript">JavaScript</option>
+            <option value="other">Other</option>
+        </select>
+
+        <button type="submit">Submit Review</button>
+    </form>
+</div>
+{% endblock %}

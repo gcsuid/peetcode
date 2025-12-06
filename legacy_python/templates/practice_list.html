@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Review Queue</h1>
+{% if problems %}
+{% for problem in problems %}
+<div class="card">
+    <h3>{{ problem.title }}</h3>
+    <p>
+        <span class="difficulty-{{ problem.difficulty }}">{{ problem.difficulty }}</span>
+        <span class="tag">{{ problem.tags }}</span>
+    </p>
+    <p>Due: {{ problem.schedule.next_review_date }}</p>
+    <a href="/practice/{{ problem.id }}"><button>Practice Now</button></a>
+</div>
+{% endfor %}
+{% else %}
+<div class="card">
+    <p>No problems due for review today! Great job.</p>
+    <a href="/dashboard"><button>Back to Dashboard</button></a>
+</div>
+{% endif %}
+{% endblock %}
