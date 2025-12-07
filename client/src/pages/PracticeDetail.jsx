@@ -24,7 +24,7 @@ const PracticeDetail = () => {
                         Authorization: `Bearer ${user.token}`,
                     },
                 };
-                const { data } = await axios.get(`http://localhost:5000/api/problems/${id}`, config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/problems/${id}`, config);
                 setProblem(data);
             } catch (error) {
                 console.error(error);
@@ -49,7 +49,7 @@ const PracticeDetail = () => {
             };
 
             await axios.post(
-                `http://localhost:5000/api/reviews/${id}`,
+                `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/reviews/${id}`,
                 { approachText, code, language: 'python' }, // Defaulting language for now
                 config
             );

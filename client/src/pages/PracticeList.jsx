@@ -16,7 +16,7 @@ const PracticeList = () => {
                         Authorization: `Bearer ${user.token}`,
                     },
                 };
-                const { data } = await axios.get('http://localhost:5000/api/reviews/due', config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/reviews/due`, config);
                 setProblems(data);
             } catch (error) {
                 console.error(error);
